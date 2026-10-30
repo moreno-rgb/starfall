@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mood Tracker - Teyvat Sanctuary</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="main-container">
+        <a href="index.html" class="back-link">← Kembali ke Sanctuary</a>
+
+        <header class="sanctuary-header">
+            <h1>✨ Jurnal Suasana Hati</h1>
+            <p>Bagaimana elemen perasaanmu hari ini?</p>
+        </header>
+
+        <div style="display: flex; gap: 8px; margin-bottom: 16px;">
+            <input type="text" id="mood-note" placeholder="Catatan singkat perasaanmu...">
+            <button id="add-mood-btn" class="btn-send">Simpan</button>
+        </div>
+
+        <div class="history-section">
+            <h3>Catatan Elemen Harian</h3>
+            <ul id="mood-list" style="list-style: none; padding: 0;">
+                <!-- Data tersimpan di sini -->
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        const moodNote = document.getElementById('mood-note');
+        const addMoodBtn = document.getElementById('add-mood-btn');
+        const moodList = document.getElementById('mood-list');
+
+        let moods = JSON.parse(localStorage.getItem('teyvat_moods')) || [];
+
+        function renderMoods() {
+            moodList.innerHTML = "";
+            moods.forEach(item => {
+                const li = document.createElement('li');
+                li.style.cssText = "background: #0b0f17; padding: 10px; border-radius: 8px; margin-bottom: 8px; font-size: 13px; border-left: 3px solid var(--accent-green);";
+                li.innerHTML = `<strong>${item.date}:</strong> ${item.text}`;
+                moodList.appendChild(li);
+            });
+        }
+
+        addMoodBtn.addEventListener('click', () => {
+            const text = moodNote.value.trim();
+            if (!text) return;
+
+            const newMood = {
+                date: new Date().toLocaleDateString('id-ID'),
+                text: text
+            };
+
+            moods.unshift(newMood);
+            localStorage.setItem('teyvat_moods', JSON.stringify(moods));
+            renderMoods();
+            moodNote.value = "";
+        });
+
+        renderMoods();
+    </script>
+</body>
+</html>

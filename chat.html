@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruang Konseling - Teyvat Sanctuary</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="main-container">
+        <a href="index.html" class="back-link">← Kembali ke Sanctuary</a>
+        
+        <header class="sanctuary-header">
+            <h1>🌿 Ruang Konseling Nahida</h1>
+            <p>Bagikan beban pikiranmu, Nahida siap mendengarkan.</p>
+        </header>
+
+        <!-- Area Chat -->
+        <div class="chat-box" id="chat-box">
+            <div class="message bot-msg">
+                <strong>Nahida:</strong> Halo Pengembara. Selamat datang di Ruang Konseling. Apa yang sedang membebani hatimu hari ini?
+            </div>
+        </div>
+
+        <!-- Input Chat -->
+        <div class="chat-input-area">
+            <input type="text" id="user-input" placeholder="Tuliskan keluh kesahmu di sini...">
+            <button id="send-btn" class="btn-send">Kirim</button>
+        </div>
+    </div>
+
+    <script src="chat.js"></script>
+</body>
+</html>

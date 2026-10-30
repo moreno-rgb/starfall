@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruang Tenang - Teyvat Sanctuary</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="main-container">
+        <a href="index.html" class="back-link">← Kembali ke Sanctuary</a>
+
+        <header class="sanctuary-header">
+            <h1>🧘 Ruang Tenang (Calm Corner)</h1>
+            <p>Latihan Pernapasan Meditasi Sumeru</p>
+        </header>
+
+        <div style="text-align: center; padding: 20px; background: #0b0f17; border-radius: 12px; margin-bottom: 16px;">
+            <h2 id="breath-status" style="color: var(--accent-green); margin-bottom: 10px;">Siap?</h2>
+            <p id="breath-timer" style="font-size: 32px; font-weight: bold; margin: 0;">4</p>
+            <button id="start-breath-btn" class="btn-music" style="margin-top: 16px;">Mulai Latihan</button>
+        </div>
+
+        <div style="font-size: 12px; color: var(--text-secondary); line-height: 1.5;">
+            <p><strong>💡 Catatan Darurat:</strong> Jika kamu membutuhkan bantuan ahli psikologi nyata, hubungi layanan kesehatan mental terdekat atau hotline resmi setempat.</p>
+        </div>
+    </div>
+
+    <script>
+        const statusText = document.getElementById('breath-status');
+        const timerText = document.getElementById('breath-timer');
+        const startBtn = document.getElementById('start-breath-btn');
+
+        startBtn.addEventListener('click', () => {
+            startBtn.style.display = 'none';
+            let count = 4;
+            statusText.textContent = "Tarik Napas Pelan-Pelan...";
+
+            const timer = setInterval(() => {
+                count--;
+                timerText.textContent = count;
+
+                if (count === 0) {
+                    clearInterval(timer);
+                    statusText.textContent = "Hembuskan Napas Perlahan...";
+                    timerText.textContent = "Selesai ✨";
+                    setTimeout(() => { startBtn.style.display = 'inline-block'; }, 2000);
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
